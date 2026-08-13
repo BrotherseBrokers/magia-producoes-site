@@ -1,0 +1,83 @@
+:root {
+  --bg: #201033;
+  --bg-alt: #2b1747;
+  --lilas: #b497d6;
+  --amarelo: #f4c95d;
+  --verde: #7fb685;
+  --laranja: #f3a96a;
+  --texto: #f5eefd;
+  --texto-suave: #cbb8e6;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--texto);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
+a { color: var(--amarelo); text-decoration: none; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 6vw;
+  background: var(--bg-alt);
+}
+header .logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--lilas); }
+nav a { margin-left: 24px; color: var(--texto-suave); }
+nav a:hover { color: var(--amarelo); }
+
+.hero {
+  padding: 12vh 6vw;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, var(--bg-alt), var(--bg) 70%);
+}
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); color: var(--lilas); }
+.hero p { margin-top: 16px; color: var(--texto-suave); font-size: 1.2rem; max-width: 600px; margin-inline: auto; }
+.hero .cta { display: inline-block; margin-top: 32px; padding: 14px 32px; border-radius: 999px; background: var(--verde); color: var(--bg); font-weight: 600; }
+
+section { padding: 8vh 6vw; }
+.section-title { font-size: 2rem; color: var(--amarelo); margin-bottom: 12px; }
+.section-sub { color: var(--texto-suave); margin-bottom: 40px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.card {
+  background: var(--bg-alt);
+  border: 1px solid rgba(180,151,214,0.25);
+  border-radius: 16px;
+  padding: 24px;
+}
+.card h3 { color: var(--laranja); margin-bottom: 8px; }
+.card p { color: var(--texto-suave); font-size: 0.95rem; }
+
+.aviso {
+  background: rgba(244,201,93,0.08);
+  border: 1px solid var(--amarelo);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin: 32px 0;
+}
+
+.btn-ingresso {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 999px;
+  background: var(--laranja);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+footer {
+  padding: 40px 6vw;
+  text-align: center;
+  color: var(--texto-suave);
+  background: var(--bg-alt);
+  font-size: 0.85rem;
+}
