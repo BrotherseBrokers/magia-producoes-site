@@ -19,14 +19,10 @@
 </header>
 
 <section class="hero">
-  <svg class="bird-fly" viewBox="0 0 64 48" aria-hidden="true">
-    <path d="M14,28 L2,21 L15,35 Z" fill="#1B1226"/>
-    <ellipse cx="32" cy="30" rx="20" ry="11" fill="#F2DA63"/>
-    <path d="M12,27 C12,16 22,11 35,11 C47,11 55,17 55,24 C55,27 52,28 47,28 L15,28 C13,28 12,27.6 12,27 Z" fill="#1B1226"/>
-    <path class="wing-front" d="M31,21 C25,6 8,8 4,19 C14,21 24,22 31,21 Z" fill="#A15BE4"/>
-    <path d="M55,20 L63,17 L55,25 Z" fill="#F68B57"/>
-    <circle cx="49" cy="18" r="2.2" fill="#F1EEE6"/>
-  </svg>
+  <div class="hero-bg" style="background-image:url('img/mountain-bg.jpg')"></div>
+  <div class="hero-scrim"></div>
+  <img class="photo-float photo-float--bird" src="img/kiskadee-side.jpg" alt="Bem-te-vi, ave símbolo do VIDA Festival">
+  <img class="photo-float photo-float--flower" src="img/flower-accent.jpg" alt="Flor tropical">
   <div class="hero-inner">
     <h1>VIDA Festival<br>Turnê Alex Serra 2026</h1>
     <p>Rio de Janeiro · São Paulo · Florianópolis</p>
@@ -54,9 +50,21 @@
 <section>
   <h2 class="section-title">Datas &amp; Cidades</h2>
   <div class="grid">
-    <div class="card"><h3>Rio de Janeiro</h3><p>15/10/2026</p></div>
-    <div class="card"><h3>São Paulo</h3><p>18/10/2026</p></div>
-    <div class="card"><h3>Florianópolis</h3><p>10/10/2026</p></div>
+    <div class="card">
+      <h3>Rio de Janeiro</h3>
+      <p>15/10/2026</p>
+      <a href="https://shotgun.live/pt-pt/events/alex-serra-toti-dub" class="btn-ingresso btn-ingresso--card" target="_blank" rel="noopener">Comprar Ingressos</a>
+    </div>
+    <div class="card">
+      <h3>São Paulo</h3>
+      <p>18/10/2026</p>
+      <a href="https://shotgun.live/pt-pt/events/alex-serra-e-toti-dub-sao-paulo-sp-18-10" class="btn-ingresso btn-ingresso--card" target="_blank" rel="noopener">Comprar Ingressos</a>
+    </div>
+    <div class="card">
+      <h3>Florianópolis</h3>
+      <p>10/10/2026</p>
+      <a href="https://shotgun.live/festivals/vida-festival-2026" class="btn-ingresso btn-ingresso--card" target="_blank" rel="noopener">Comprar Ingressos</a>
+    </div>
   </div>
 </section>
 
@@ -75,5 +83,23 @@
 </section>
 
 <footer>Magia Produções · Ingressos via plataforma oficial Shotgun</footer>
+
+<button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false" aria-label="Ativar som da natureza">🔈</button>
+<audio id="nature-audio" src="audio/birds-ambience.mp3" loop preload="none"></audio>
+<script>
+  var btn = document.getElementById('sound-toggle');
+  var audio = document.getElementById('nature-audio');
+  btn.addEventListener('click', function () {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '🔊';
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      audio.pause();
+      btn.textContent = '🔈';
+      btn.setAttribute('aria-pressed', 'false');
+    }
+  });
+</script>
 </body>
 </html>

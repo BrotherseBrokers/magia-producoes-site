@@ -63,62 +63,75 @@ nav a:hover { opacity: 1; color: var(--amarelo); }
 /* hero */
 .hero {
   position: relative;
-  padding: 14vh 6vw 10vh;
+  padding: 16vh 6vw 12vh;
   text-align: center;
   overflow: hidden;
-  background: var(--off-white);
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tinta);
 }
-.hero::before {
-  content: "";
+.hero-bg {
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 10% 15%, var(--amarelo) 0 60px, transparent 61px),
-    radial-gradient(circle at 92% 20%, var(--verde) 0 46px, transparent 47px),
-    radial-gradient(circle at 85% 82%, var(--roxo) 0 70px, transparent 71px),
-    radial-gradient(circle at 6% 85%, var(--laranja) 0 54px, transparent 55px),
-    radial-gradient(circle at 50% 95%, var(--verde) 0 30px, transparent 31px);
-  opacity: 0.35;
-  pointer-events: none;
+  background-size: cover;
+  background-position: center 65%;
+  transform: scale(1.03);
 }
-.hero-inner { position: relative; z-index: 1; }
-
-/* bem-te-vi animado */
-.bird-fly {
+.hero-scrim {
   position: absolute;
-  top: 16%;
-  left: 0;
-  width: 92px;
-  height: auto;
-  z-index: 2;
-  animation: fly-path 16s linear infinite;
-  pointer-events: none;
-  filter: drop-shadow(0 6px 10px rgba(27,18,38,0.18));
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27,18,38,0.6) 0%, rgba(27,18,38,0.28) 45%, rgba(27,18,38,0.8) 100%);
 }
-.bird-fly .wing-front { transform-origin: 28px 20px; animation: flap 0.28s ease-in-out infinite alternate; }
-@keyframes fly-path {
-  0%   { transform: translate(-10vw, 6vh) scale(0.75) rotate(-4deg); opacity: 0; }
-  8%   { opacity: 1; }
-  35%  { transform: translate(35vw, -4vh) scale(0.95) rotate(2deg); }
-  65%  { transform: translate(70vw, 4vh) scale(1) rotate(-2deg); }
-  92%  { opacity: 1; }
-  100% { transform: translate(112vw, -2vh) scale(0.85) rotate(3deg); opacity: 0; }
+.hero-inner { position: relative; z-index: 2; }
+
+/* fotos reais flutuantes */
+.photo-float {
+  position: absolute;
+  z-index: 1;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 4px solid var(--off-white);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  animation: photo-bob 7s ease-in-out infinite;
 }
-@keyframes flap {
-  from { transform: scaleY(1) rotate(0deg); }
-  to   { transform: scaleY(0.35) rotate(-18deg); }
+.photo-float--bird {
+  width: 200px;
+  height: 260px;
+  top: 14%;
+  left: 6%;
+}
+.photo-float--flower {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  bottom: 10%;
+  right: 7%;
+  animation-delay: 2s;
+}
+@keyframes photo-bob {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-16px) rotate(1deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bird-fly { animation: none; opacity: 0; }
+  .photo-float { animation: none; }
+}
+@media (max-width: 780px) {
+  .hero { padding-top: 8vh; }
+  .hero-inner { margin-top: 130px; }
+  .photo-float--bird { width: 96px; height: 128px; left: 5%; top: 4%; }
+  .photo-float--flower { width: 76px; height: 76px; right: 5%; top: 4%; bottom: auto; animation-delay: 1s; }
 }
 .hero h1 {
   font-size: clamp(2.6rem, 8vw, 5.5rem);
   line-height: 1;
-  color: var(--roxo);
+  color: var(--off-white);
+  text-shadow: 0 6px 30px rgba(0,0,0,0.4);
 }
 .hero p {
   margin-top: 20px;
-  color: var(--tinta-suave);
+  color: rgba(241,238,230,0.92);
   font-size: 1.15rem;
   max-width: 600px;
   margin-inline: auto;
@@ -212,6 +225,13 @@ section { padding: 9vh 6vw; }
   font-size: 1.15rem;
 }
 .card p { color: var(--tinta-suave); font-size: 0.95rem; }
+.btn-ingresso--card {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  box-shadow: none;
+}
 
 .aviso {
   background: #fff;
@@ -236,3 +256,27 @@ footer {
   header { justify-content: center; text-align: center; }
   nav { justify-content: center; gap: 18px; }
 }
+
+/* som ambiente */
+.sound-toggle {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 50;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--tinta);
+  color: var(--off-white);
+  border: 2px solid var(--amarelo);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(27,18,38,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+.sound-toggle:hover { transform: scale(1.06); }
+.sound-toggle[aria-pressed="true"] { border-color: var(--verde); }
