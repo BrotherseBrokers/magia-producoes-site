@@ -140,6 +140,44 @@ nav a:hover { opacity: 1; color: var(--amarelo); }
 .btn-ingresso { background: var(--laranja); box-shadow: 0 8px 24px rgba(246,139,87,0.35); }
 
 section { padding: 9vh 6vw; }
+
+/* video manifesto */
+.video-frame-wrap {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.video-glow {
+  position: absolute;
+  inset: -6%;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 15% 20%, var(--amarelo) 0%, transparent 40%),
+    radial-gradient(circle at 85% 25%, var(--verde) 0%, transparent 42%),
+    radial-gradient(circle at 50% 90%, var(--laranja) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, var(--roxo) 0%, transparent 40%);
+  filter: blur(40px);
+  opacity: 0.55;
+  animation: video-glow-float 10s ease-in-out infinite alternate;
+}
+@keyframes video-glow-float {
+  0%   { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.08) rotate(4deg); }
+}
+.video-frame {
+  position: relative;
+  z-index: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 4px solid var(--tinta);
+  box-shadow: 0 20px 50px rgba(27,18,38,0.25);
+  aspect-ratio: 16 / 9;
+  background: var(--tinta);
+}
+.video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (prefers-reduced-motion: reduce) {
+  .video-glow { animation: none; }
+}
 .section-title {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   color: var(--roxo);
