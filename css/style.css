@@ -94,13 +94,6 @@ nav a:hover { opacity: 1; color: var(--amarelo); }
   border-radius: 18px;
   border: 4px solid var(--off-white);
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  animation: photo-bob 7s ease-in-out infinite;
-}
-.photo-float--bird {
-  width: 200px;
-  height: 260px;
-  top: 14%;
-  left: 6%;
 }
 .photo-float--flower {
   width: 130px;
@@ -108,20 +101,59 @@ nav a:hover { opacity: 1; color: var(--amarelo); }
   border-radius: 50%;
   bottom: 10%;
   right: 7%;
-  animation-delay: 2s;
 }
-@keyframes photo-bob {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50% { transform: translateY(-16px) rotate(1deg); }
+
+/* bem-te-vi voando de um lado pro outro */
+.bird-flying {
+  position: absolute;
+  z-index: 2;
+  top: 4%;
+  left: 4%;
+  width: 190px;
+  height: 130px;
+  animation: bird-cross 10s ease-in-out infinite;
+  transform-origin: center;
+  pointer-events: none;
+}
+.bird-flying img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% 45%;
+  border-radius: 16px;
+  border: 4px solid var(--off-white);
+  box-shadow: 0 18px 32px rgba(0,0,0,0.4);
+  animation: wing-flap 0.45s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes bird-cross {
+  0%   { transform: translate(0, 0) rotate(-5deg) scaleX(1); }
+  46%  { transform: translate(64vw, 3vh) rotate(4deg) scaleX(1); }
+  50%  { transform: translate(66vw, 2vh) rotate(4deg) scaleX(-1); }
+  96%  { transform: translate(0, 0) rotate(-5deg) scaleX(-1); }
+  100% { transform: translate(0, 0) rotate(-5deg) scaleX(1); }
+}
+@keyframes wing-flap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.92); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .photo-float { animation: none; }
+  .bird-flying { animation: none; }
+  .bird-flying img { animation: none; }
 }
 @media (max-width: 780px) {
   .hero { padding-top: 8vh; }
   .hero-inner { margin-top: 130px; }
-  .photo-float--bird { width: 96px; height: 128px; left: 5%; top: 4%; }
-  .photo-float--flower { width: 76px; height: 76px; right: 5%; top: 4%; bottom: auto; animation-delay: 1s; }
+  .bird-flying { width: 116px; height: 80px; left: 5%; top: 4%; }
+  .photo-float--flower { width: 76px; height: 76px; right: 5%; top: 4%; bottom: auto; }
+  @keyframes bird-cross {
+    0%   { transform: translate(0, 0) rotate(-5deg) scaleX(1); }
+    46%  { transform: translate(58vw, 2vh) rotate(4deg) scaleX(1); }
+    50%  { transform: translate(60vw, 1vh) rotate(4deg) scaleX(-1); }
+    96%  { transform: translate(0, 0) rotate(-5deg) scaleX(-1); }
+    100% { transform: translate(0, 0) rotate(-5deg) scaleX(1); }
+  }
 }
 .hero h1 {
   font-size: clamp(2.6rem, 8vw, 5.5rem);
